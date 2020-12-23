@@ -1,0 +1,218 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class JavaCalculator {
+
+    private double total1 = 0.0;
+    private double total2 = 0.0;
+    private char math_operator;
+    private JPanel JavaCalculator;
+    private JTextField textDisplay;
+    private JButton Division;
+    private JButton Two;
+    private JButton Three;
+    private JButton Five;
+    private JButton Eight;
+    private JButton Zero;
+    private JButton Addition;
+    private JButton Six;
+    private JButton Nine;
+    private JButton Clear;
+    private JButton Subtraction;
+    private JButton Multiplication;
+    private JButton Equals;
+    private JButton One;
+    private JButton Four;
+    private JButton Seven;
+    private JButton Decimal;
+
+    private void getOperator(String text){
+
+        math_operator = text.charAt(0);
+        total1 = total1 + Double.parseDouble(textDisplay.getText());
+        textDisplay.setText("");
+    }
+
+    public JavaCalculator() {
+        One.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String OneText = textDisplay.getText() + One.getText();
+                textDisplay.setText(OneText);
+            }
+        });
+        Two.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String TwoText = textDisplay.getText() + Two.getText();
+                textDisplay.setText(TwoText);
+
+            }
+        });
+        Three.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String ThreeText = textDisplay.getText() + Three.getText();
+                textDisplay.setText(ThreeText);
+
+            }
+        });
+        Four.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String FourText = textDisplay.getText() + Four.getText();
+                textDisplay.setText(FourText);
+
+            }
+        });
+        Five.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String FiveText = textDisplay.getText() + Five.getText();
+                textDisplay.setText(FiveText);
+
+            }
+        });
+        Six.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String SixText = textDisplay.getText() + Six.getText();
+                textDisplay.setText(SixText);
+
+            }
+        });
+        Seven.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String SevenText = textDisplay.getText() + Seven.getText();
+                textDisplay.setText(SevenText);
+
+            }
+        });
+        Eight.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String EightText = textDisplay.getText() + Eight.getText();
+                textDisplay.setText(EightText);
+
+            }
+        });
+        Nine.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String NineText = textDisplay.getText() + Nine.getText();
+                textDisplay.setText(NineText);
+
+            }
+        });
+        Zero.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String ZeroText = textDisplay.getText() + Zero.getText();
+                textDisplay.setText(ZeroText);
+
+            }
+        });
+        Addition.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String button_text = Addition.getText();
+                getOperator(button_text);
+            }
+        });
+        Equals.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                switch (math_operator){
+                    case '+':
+                        total2 = total1 + Double.parseDouble(textDisplay.getText());
+                        break;
+                    case '-':
+                        total2 = total1 - Double.parseDouble(textDisplay.getText());
+                        break;
+                    case 'x':
+                        total2 = total1 * Double.parseDouble(textDisplay.getText());
+                        break;
+                    case '/':
+                        total2 = total1 / Double.parseDouble(textDisplay.getText());
+                        break;
+                }
+
+                textDisplay.setText(Double.toString(total2));
+                total1 = 0;
+            }
+        });
+        Clear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                total2 = 0;
+                textDisplay.setText("");
+            }
+        });
+        Decimal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if(textDisplay.getText().equals("")){
+                    textDisplay.setText("0.");
+                }
+                else if(textDisplay.getText().contains(".")){
+                    Decimal.setEnabled(false);
+                }
+                else{
+                    String DecimalText = textDisplay.getText() + Decimal.getText();
+                    textDisplay.setText(DecimalText);
+                }
+                Decimal.setEnabled(true);
+
+
+            }
+        });
+        Subtraction.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String button_text = Subtraction.getText();
+                getOperator(button_text);
+            }
+        });
+        Multiplication.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String button_text = Multiplication.getText();
+                getOperator(button_text);
+            }
+        });
+        Division.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String button_text = Division.getText();
+                getOperator(button_text);
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("JavaCalculator");
+        frame.setContentPane(new JavaCalculator().JavaCalculator);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+}
